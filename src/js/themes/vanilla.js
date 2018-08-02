@@ -260,7 +260,7 @@ export default deepFreeze({
   anchor: {
     textDecoration: 'none',
     fontWeight: 600,
-    color: css`${props => props.theme.global.colors.brand}`,
+    // color: undefined,
   },
   button: {
     border: {
