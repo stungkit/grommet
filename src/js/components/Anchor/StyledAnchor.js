@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { colorForName, focusStyle } from '../../utils';
+import { focusStyle } from '../../utils';
 
 const disabledStyle = `
   opacity: 0.3;
@@ -13,8 +13,11 @@ const StyledAnchor = styled.a`
   font-size: inherit;
   line-height: inherit;
   color: ${props =>
-    (props.theme.dark ? props.theme.global.colors.darkBackground.text
-      : props.theme.anchor.color || colorForName('brand', props.theme))};
+    (props.theme.dark ? (
+      props.theme.anchor.colors.dark || props.theme.global.colors.darkBackground.text
+    ) : (
+      props.theme.anchor.colors.light || props.theme.global.colors.darkBackground.text
+    ))};
   text-decoration: ${props => props.theme.anchor.textDecoration};
   cursor: pointer;
   outline: none;
@@ -23,10 +26,6 @@ const StyledAnchor = styled.a`
     &:hover {
       text-decoration: underline;
     }
-  `}
-
-  ${props => !props.primary && props.icon && props.label && `
-    color: ${props.theme.anchor.color || props.theme.global.colors.text};
   `}
 
   ${props => props.icon && !props.label && `
